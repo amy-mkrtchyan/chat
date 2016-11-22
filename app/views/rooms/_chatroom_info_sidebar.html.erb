@@ -1,0 +1,32 @@
+<div class='chatroom-sidebar'>
+  <!-- ROOM AVATAR -->
+  <div class='chatroom-avatar'>
+    <%= image_tag @room.avatar.url(:thumb), class: 'img-responsive' %>
+  </div>
+  <!-- END ROOM AVATAR -->
+  <!-- ROOM NAME -->
+  <div class='chatroom-name'>
+    <%= @room.name %>
+  </div>
+  <!-- END ROOM AVATAR -->
+  <!-- BUTTONS -->
+  <% if @room_policy.can_manage?(@room) %>
+    <div class='chatroom-buttons'>
+      <%= link_to 'Edit', edit_room_path(@room), class: 'btn btn-success btn-sm' %>
+      <%= link_to 'Delete', room_path(@room), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: 'btn btn-danger btn-sm' %>
+    </div>
+  <% end %>
+  <!-- END BUTTONS -->
+  <!-- USERS -->
+  <div class='chatroom-usermenu'>
+    <ul class='nav'>
+      <% @room.room_users.each do |room_user| %>
+          <li class="<%= is_current_user?(room_user.user_id) ? 'active': '' %>" >
+            <i class='glyphicon glyphicon-user'></i>
+            <%= room_user.user.email %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+  <!-- END USERS -->
+</div>

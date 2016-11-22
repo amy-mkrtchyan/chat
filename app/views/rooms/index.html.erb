@@ -1,0 +1,19 @@
+<div class='row'>
+
+  <% if @room_policy.can_create? %>
+    <div class='col-xs-3'>
+      <div class='thumbnail new-room'>
+        <%= link_to 'New Room', new_room_path %>
+      </div>
+    </div>
+  <% end %>
+
+  <% @rooms.each do |room| %>
+    <div class='col-xs-3'>
+      <a href="<%= room_path(room) %>" class='thumbnail borderless square_200' >
+        <%= image_tag room.avatar.url(:thumb), class: 'hov' %>
+        <%= room.name %>
+      </a>
+    </div>
+  <% end %>
+</div>

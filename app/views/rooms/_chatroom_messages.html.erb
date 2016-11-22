@@ -1,0 +1,28 @@
+<div class='chatroom-content'>
+  <div class='row current-chat-area'>
+    <div class='col-md-12'>
+      <ul id='messages' class='messages-list'>
+        <% @room.messages.each do |msg| %>
+            <li class='media'>
+              <div class='media-body'>
+                  <a class='pull-left' href='#'>
+                    <%= image_tag msg.user.avatar.url(:thumb), class: 'media-object img-circle square_48' %>
+                  </a>
+                  <div class='media-body'>
+                    <%= msg.body %>
+                    <br>
+                    <small class='text-muted'><%= msg.user.try(:email) || 'Guest User' %> | <%= msg.created_at %></small>
+                    <hr>
+                  </div>
+              </div>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class='row current-chat-footer'>
+    <div class='panel-footer'>
+      <%= render 'messages/message_form', locals: { message: @message, room: @room }%>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<%= simple_form_for( @message, remote: true, authenticity_token: true ) do |f| %>
+    <div class='input-group'>
+      <%= text_field_tag :msg_body, nil, class: 'form-control' %>
+      <%= f.hidden_field :uid, value: current_user.try(:id) %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.hidden_field :body %>
+      <span class='input-group-btn'>
+        <%= f.submit 'Send', class: 'btn btn-default' %>
+      </span>
+    </div>
+<% end %>

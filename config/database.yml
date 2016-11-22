@@ -1,0 +1,21 @@
+default: &default
+ adapter: postgresql
+ encoding: unicode
+ pool: 5
+ username: pguser
+ password: pgpass
+
+development:
+ <<: *default
+ database: db/chatroom_development
+ host: localhost
+
+test:
+ <<: *default
+ database: db/chatroom_test
+ host: localhost
+
+production:
+ <<: *default
+ database: db/chatroom_production
+ host: localhost
