@@ -1,9 +1,7 @@
 default: &default
  adapter: postgresql
  encoding: unicode
- pool: 5
- username: pguser
- password: pgpass
+ pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
  <<: *default
@@ -17,5 +15,6 @@ test:
 
 production:
  <<: *default
- database: db/chatroom_production
- host: localhost
+ database: chatroom_production
+ username: chatroom
+ password: <%= ENV['CHATROOM_DATABASE_PASSWORD'] %>
