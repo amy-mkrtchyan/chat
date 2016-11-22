@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+Real time chatroom application!
 
 * Ruby version
-
-* System dependencies
+    5.0.0.1
 
 * Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+        bundle install
+        
+* Set PostgreSQL profile credentials in `database.yml` 
+        
+        rake db:create db:migrate
+        
+* Start Webrick
+    
+        rails s
+    
